@@ -1,0 +1,32 @@
+# 今日头条热点工作台配置示例
+# 复制本文件为 config/config.yaml 后填入你自己的值，切勿提交真实令牌。
+
+github:
+  username: "your-github-username"   # 替换为你的 GitHub 用户名
+  repo: "toutiao-hotspot-workflow"
+  # 远程推送前需你确认，本工具不会自动推送
+
+collection:
+  max_candidates: 20
+  min_candidates: 10
+  search_queries:
+    - "今日头条 热榜"
+    - "全网热榜 今日"
+  source_note: "仅采集公开可见信息，不绕过登录/验证码"
+
+scoring_weights:
+  timeliness: 0.25          # 时效性
+  heat_signal: 0.25         # 热度信号（榜单/可见指标，非单篇阅读量）
+  reader_interest: 0.20     # 读者兴趣
+  source_reliability: 0.15  # 资料可靠性
+  original_space: 0.15      # 原创发挥空间
+
+output:
+  topics_csv: "output/topics/candidates.csv"
+  draft_dir: "output/drafts"
+  image_dir: "output/images"
+
+writing:
+  target_audience: "普通读者"
+  style: "客观严谨、介于学术与口语之间"
+  require_fact_check: true
